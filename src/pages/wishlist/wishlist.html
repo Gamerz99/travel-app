@@ -1,0 +1,19 @@
+
+<ion-header>
+    <ion-navbar color="primary">
+      <ion-title>wishlist</ion-title>
+    </ion-navbar>
+</ion-header>
+  
+<ion-content padding>
+    <ion-list>
+        <ion-item *ngFor="let res of wishlist">
+          <ion-avatar item-start>
+            <img src="assets/imgs/card-amsterdam.png">
+          </ion-avatar>
+          <h3>{{res.name}}</h3>
+          <h3>{{res.description}}</h3>
+        </ion-item>
+      </ion-list>
+      <button ion-button full (click)="clearlist()">Clear</button>
+</ion-content>

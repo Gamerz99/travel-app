@@ -1,0 +1,51 @@
+<ion-header>
+  <ion-navbar color="primary">
+    <ion-title>Trip Location</ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only>
+        <img src="{{userdata.photo}}" class="profile-image">
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <div *ngIf="destination">
+    <ion-card class="card-background">
+      <div class="weather" *ngIf="weather">
+        <div class="wicon">
+          <img src="{{weather.icon_url}}">
+        </div>
+        <p class="text">{{weather.weather}}</p>
+        <p class="text">{{weather.temperature_string}}</p>
+      </div>
+      <img class="image" src="assets/imgs/galle.jpg">
+      <ion-fab right top padding>
+        <button ion-fab color="{{ficon}}" (click)="addlist()">
+          <ion-icon name="ios-add"></ion-icon>
+        </button>
+      </ion-fab>
+      <ion-item>
+        <h2 class="card-title">{{destination.name}}</h2>
+        <p class="card-subtitle">{{destination.description}}</p>
+        <p>
+          <small-ion-rating [numStars]="5" [readOnly]="true" [value]="4.2">
+          </small-ion-rating>
+        </p>
+
+      </ion-item>
+      <div  class="distance">
+        <span item-left icon-left class="stats">
+          <ion-icon name="ios-stats"></ion-icon>{{distance}}</span>
+        <span item-left icon-left>
+          <ion-icon name="md-time"></ion-icon>{{duration}}</span>
+      </div>
+      <ion-card-content>
+        <p class="card-subtitle">Wait a minute. Wait a minute, Doc. Uhhh... Are you telling me that you built a time machine... out of a DeLorean?!
+          Whoa. This is heavy.</p>
+      </ion-card-content>
+      <button ion-button full icon-left color="danger" class="trip-button" (click)="gotomap(destination.name)">
+        <ion-icon name="ios-bicycle"></ion-icon>Start Trip</button>
+    </ion-card>
+  </div>
+</ion-content>

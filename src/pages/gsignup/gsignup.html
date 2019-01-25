@@ -1,0 +1,58 @@
+<ion-header>
+
+  <ion-navbar color="primary">
+    <ion-title center>Signup</ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content >
+  <ion-list>
+
+    <ion-item>
+      <ion-input type="text" placeholder="Username" [(ngModel)]="user.username"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-input type="text" placeholder="Name" [(ngModel)]="user.name"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-input type="text" placeholder="Email" [(ngModel)]="user.email"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-input type="password" placeholder="Password" [(ngModel)]="user.password"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-input type="password" placeholder="Retype Password" [(ngModel)]="repassword"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-input type="text" placeholder="City" [(ngModel)]="user.area"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Gender</ion-label>
+      <ion-select [(ngModel)]="user.gender">
+        <ion-option value="male">Male</ion-option>
+        <ion-option value="female">Female</ion-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item>
+      <ion-input type="text" placeholder="Contact Number" [(ngModel)]="user.contact_number"></ion-input>
+    </ion-item>
+
+    <!-- <ion-item>
+      <ion-label class="padding-text">Birthday</ion-label>
+      <ion-datetime displayFormat="MMM DD YYYY" [(ngModel)]="month"></ion-datetime>
+    </ion-item>-->
+
+
+  </ion-list>
+  <div padding>
+    <button ion-button block (click)="signup()" outline>Sign In</button>
+  </div>
+</ion-content>

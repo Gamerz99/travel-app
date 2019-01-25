@@ -1,0 +1,85 @@
+<ion-header>
+  <ion-navbar color="primary">
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Profile</ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only color="royal" (click)="edit()">
+        <ion-icon name="md-create"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <div class="profile-media">
+    <img src="assets/imgs/card-saopaolo.png" class="about-image profile-background-image" style="vertical-align:middle;">
+    <div class="profile-details">
+      <img *ngIf="user.online==true" src={{userdata.photo}} class="img-circle online-image">
+      <img *ngIf="user.online==false" src={{userdata.photo}} class="img-circle offline-image">
+      <h5 class="name">{{userdata.name}}</h5>
+      <p *ngIf="userdata" class="star">
+        <ion-rating [numStars]="5" [readOnly]="true" [value]="userdata.rating">
+        </ion-rating>
+      </p>
+    </div>
+  </div>
+  <ion-item>
+    <ion-label> Active</ion-label>
+    <ion-toggle [(ngModel)]="user.online" (ionChange)="toogle()" color="online"></ion-toggle>
+  </ion-item>
+  <div>
+    <ion-segment [(ngModel)]="profile" color="danger">
+      <ion-segment-button value="details">
+        Profile
+      </ion-segment-button>
+      <ion-segment-button value="reviews">
+        Reviews
+      </ion-segment-button>
+    </ion-segment>
+  </div>
+  <div [ngSwitch]="profile">
+    <ion-list *ngSwitchCase="'reviews'">
+      <div *ngIf="ratinglist">
+        <ion-item *ngFor="let res of ratinglist">
+          <ion-avatar item-start>
+            <img src="assets/imgs/card-amsterdam.png">
+          </ion-avatar>
+          <h2 class="card-title">{{res.rate_by}} </h2>
+          <p class="card-subtitle">{{res.comment}} </p>
+          <small-ion-rating [numStars]="5" [readOnly]="true" [value]="res.rating">
+          </small-ion-rating>
+        </ion-item>
+      </div>
+    </ion-list>
+
+    <span *ngSwitchCase="'details'" padding>
+      <ion-list>
+        <ion-item>
+          <ion-label icon-left class="profile-subtitle">
+            Mobile No : {{userdata.contact_number}}</ion-label>
+          <button ion-button icon-only clear item-end color="danger" (click)="call()">
+            <ion-icon name="ios-call"></ion-icon>
+          </button>
+        </ion-item>
+        <ion-item>
+          <ion-label icon-left class="profile-subtitle">
+            Age : 28</ion-label>
+        </ion-item>
+        <ion-item>
+          <ion-label icon-left class="profile-subtitle">
+            City : {{userdata.area}}</ion-label>
+        </ion-item>
+        <ion-item>
+          <ion-label icon-left class="profile-subtitle">
+            Gender : {{userdata.gender}}</ion-label>
+        </ion-item>
+        <ion-item>
+          <ion-label icon-left class="profile-subtitle">
+            Languages : English,Sinhala</ion-label>
+        </ion-item>
+      </ion-list>
+    </span>
+  </div>
+</ion-content>

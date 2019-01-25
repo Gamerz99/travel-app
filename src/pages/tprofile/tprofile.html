@@ -1,0 +1,72 @@
+<ion-header>
+    <ion-navbar color="primary">
+        <ion-title>Taxi Profile</ion-title>
+        <ion-buttons end>
+            <!--<button ion-button icon-only (click)="viewprofile()">
+                <img src="{{userdata.photo}}" class="uprofile-image">
+            </button>-->
+        </ion-buttons>
+    </ion-navbar>
+</ion-header>
+
+<ion-content>
+    <div class="profile-media">
+        <img src="assets/imgs/card-saopaolo.png" class="about-image profile-background-image" style="vertical-align:middle;">
+        <div class="profile-details">
+            <img src="assets/imgs/card-amsterdam.png" class="img-circle profile-image">
+            <h5 class="name">Tharinda</h5>
+            <p class="star">
+                <ion-rating [numStars]="5" [readOnly]="true" [value]="3.2">
+                </ion-rating>
+            </p>
+        </div>
+    </div>
+    <div>
+        <ion-segment [(ngModel)]="profile" color="danger">
+            <ion-segment-button value="details">
+                Profile
+            </ion-segment-button>
+        </ion-segment>
+    </div>
+    <div [ngSwitch]="profile">
+        <span *ngSwitchCase="'details'" padding>
+            <div *ngIf="taxi">
+                <ion-list>
+                    <ion-item>
+                        <ion-label icon-left class="profile-subtitle">
+                            Mobile No : {{taxi.contact_no}}</ion-label>
+                        <button ion-button icon-only clear item-end color="danger" (click)="call()">
+                            <ion-icon name="ios-call"></ion-icon>
+                        </button>
+                    </ion-item>
+                    <ion-item>
+                        <ion-label icon-left class="profile-subtitle">
+                            Model : {{taxi.model}}</ion-label>
+                    </ion-item>
+                    <ion-item>
+                        <ion-label icon-left class="profile-subtitle">
+                            Type : {{taxi.type}}</ion-label>
+                    </ion-item>
+                    <ion-item>
+                        <ion-label icon-left class="profile-subtitle">
+                            Rate Per km : Rs{{taxi.rate_per_km}}</ion-label>
+                    </ion-item>
+                    <ion-item>
+                            <ion-label icon-left class="profile-subtitle">
+                                Seats : {{taxi.seats}}</ion-label>
+                        </ion-item>
+                    <ion-item>
+                        <ion-label icon-left class="profile-subtitle">
+                            Reg No : {{taxi.reg_no}}</ion-label>
+                    </ion-item>
+                    <ion-item>
+                        <ion-label icon-left class="profile-subtitle">
+                            Owner : {{taxi.owner}}</ion-label>
+                    </ion-item>
+                    
+                </ion-list>
+            </div>
+        </span>
+    </div>
+
+</ion-content>

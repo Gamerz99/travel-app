@@ -1,0 +1,60 @@
+<ion-header>
+  <ion-navbar color="primary">
+    <ion-title>Edit Profile</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <input type="file" #fileInput style="visibility: hidden; height: 0px" name="files[]" (change)="processWebImage($event)" />
+  <div class="profile-media">
+    <div class="profile-details">
+      <img src="{{userdata.photo}}" class="img-circle profile-image">
+    </div>
+    <div class="profile-button">
+      <ion-buttons>
+        <button ion-button large clear (click)="edit()">
+          <ion-icon name="md-create"></ion-icon>
+        </button>
+      </ion-buttons>
+    </div>
+  </div>
+  <ion-list>
+    <ion-item>
+      <ion-input class="padding-text" type="text" placeholder="Nname" [(ngModel)]="userdata.name"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-input class="padding-text" type="text" placeholder="Email" [(ngModel)]="userdata.email"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-input class="padding-text" type="text" placeholder="Contact number" [(ngModel)]="userdata.contact_number"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-input class="padding-text" type="text" placeholder="City" [(ngModel)]="userdata.area"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label class="padding-text">Gender</ion-label>
+      <ion-select [(ngModel)]="userdata.gender">
+        <ion-option value="male">Male</ion-option>
+        <ion-option value="female">Female</ion-option>
+      </ion-select>
+    </ion-item>
+    <ion-item>
+      <ion-label class="padding-text">Birthday</ion-label>
+      <ion-datetime displayFormat="MMM DD YYYY"></ion-datetime>
+    </ion-item>
+    <ion-item>
+      <ion-label class="padding-text">Languages</ion-label>
+      <ion-select multiple="true">
+        <ion-option value="nes">English</ion-option>
+        <ion-option value="n64">Chinese</ion-option>
+        <ion-option value="ps">Russian </ion-option>
+        <ion-option value="genesis">Arabic</ion-option>
+        <ion-option value="saturn">Italic</ion-option>
+        <ion-option value="snes">Hindi</ion-option>
+      </ion-select>
+    </ion-item>
+  </ion-list>
+  <div padding>
+    <button ion-button block (click)="updateguide()" class="btn">Save</button>
+  </div>
+</ion-content>

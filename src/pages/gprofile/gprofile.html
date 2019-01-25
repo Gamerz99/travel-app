@@ -1,0 +1,101 @@
+<ion-header>
+    <ion-navbar color="primary">
+        <ion-title>Guide Profile</ion-title>
+        <ion-buttons end>
+            <button ion-button icon-only (click)="viewprofile()">
+                <img src="{{userdata.photo}}" class="uprofile-image">
+            </button>
+        </ion-buttons>
+    </ion-navbar>
+</ion-header>
+
+<ion-content>
+    <div class="profile-media">
+        <img src="assets/imgs/back.jpg" class="about-image profile-background-image" style="vertical-align:middle;">
+        <ion-fab right top>
+            <button ion-fab color="{{ficon}}" mini (click)="addfavourite()">
+                <ion-icon name="md-star"></ion-icon>
+            </button>
+        </ion-fab>
+        <div class="profile-details">
+            <div *ngIf="guide">
+                <img *ngIf="guide.online==true" src="assets/imgs/card-amsterdam.png" class="img-circle online-image">
+                <img *ngIf="guide.online==false" src="assets/imgs/card-amsterdam.png" class="img-circle offline-image">
+                <h5 class="name">{{guide.name}}</h5>
+                <p class="star">
+                    <ion-rating [numStars]="5" [readOnly]="true" [value]="guide.rating">
+                    </ion-rating>
+                </p>
+            </div>
+        </div>
+    </div>
+    <div>
+        <ion-segment [(ngModel)]="profile" color="danger">
+            <ion-segment-button value="details">
+                Profile
+            </ion-segment-button>
+            <ion-segment-button value="reviews">
+                Reviews
+            </ion-segment-button>
+        </ion-segment>
+    </div>
+    <div [ngSwitch]="profile">
+        <span *ngSwitchCase="'reviews'">
+            <ion-list>
+                <ion-item-divider color="light">Reviews</ion-item-divider>
+                
+                <div *ngIf="ratinglist">
+                    <ion-item *ngFor="let res of ratinglist">
+                        <ion-avatar item-start>
+                            <img src="assets/imgs/card-amsterdam.png">
+                        </ion-avatar>
+                        <h2 class="card-title">{{res.rate_by}} </h2>
+                        <p class="card-subtitle">{{res.comment}}</p>
+                        <small-ion-rating [numStars]="5" [readOnly]="true" [value]="res.rating">
+                        </small-ion-rating>
+                    </ion-item>
+                </div>
+                <div class="rate">
+                    <div class="review-star">
+                        <small-ion-rating [numStars]="5" [readOnly]="false" [value]="0" (clicked)="starClicked($event)">
+                        </small-ion-rating>
+                    </div>
+                    <ion-item>
+                        <button ion-button small clear item-end (click)="addrate()" color="danger">Post</button>
+                        <ion-textarea placeholder="Wirte review" [(ngModel)]="rate.comment"></ion-textarea>
+                    </ion-item>
+                </div>
+            </ion-list>
+        </span>
+        <span *ngSwitchCase="'details'" padding>
+            <div *ngIf="guide">
+                <ion-list>
+                    <ion-item>
+                        <ion-label icon-left class="profile-subtitle">
+                            Mobile No : {{guide.contact_number}}</ion-label>
+                        <button ion-button icon-only clear item-end color="danger" (click)="call()">
+                            <ion-icon name="ios-call"></ion-icon>
+                        </button>
+                    </ion-item>
+                    <ion-item>
+                        <ion-label icon-left class="profile-subtitle">
+                            Age : 28</ion-label>
+                    </ion-item>
+                    <ion-item>
+                        <ion-label icon-left class="profile-subtitle">
+                            City : {{guide.area}}</ion-label>
+                    </ion-item>
+                    <ion-item>
+                        <ion-label icon-left class="profile-subtitle">
+                            Gender : {{guide.gender}}</ion-label>
+                    </ion-item>
+                    <ion-item>
+                        <ion-label icon-left class="profile-subtitle">
+                            Languages : English,Sinhala</ion-label>
+                    </ion-item>
+
+                </ion-list>
+            </div>
+        </span>
+    </div>
+</ion-content>

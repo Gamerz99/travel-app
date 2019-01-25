@@ -1,0 +1,77 @@
+page-uprofile {
+    .profile-media {
+        background: #000;
+         min-height: 200px;
+          overflow: hidden; 
+          position: relative;
+      }
+    .profile-media .profile-background-image {
+    opacity: 0.3;
+    position: absolute;
+    top:-100%;
+    left:0;
+    right: 0;
+    bottom:-100%;
+    margin: auto;
+    }
+    .profile-media .profile-details {
+      text-align: center; 
+      position: absolute;
+       width: 100%; 
+       color: #fff; 
+       padding: 20px 5% 0 5%;
+    }
+    .profile-media .profile-details .profile-image {
+      width: 100px;
+      height:100px;
+       border: 3px solid   rgba(255, 255, 255, 0.9);
+    }
+    .img-circle {
+      border-radius: 50%;
+    }
+    .about-image {
+      width: 100%;
+      /*height: 220px;*/
+      height: 200px;
+      object-fit:cover;
+    }
+    
+    .star{
+      margin-top:0px;
+    }
+    .post{
+        margin-top: 30px;
+    }
+    .name{
+        margin-bottom: 0px;
+    }
+    .card-title {
+      position: relative;
+      top: 36%;
+      font-size: 15px;
+      width: 100%;
+      font-weight: 500;
+      color: #676060;
+      padding-left:6px; 
+    }
+    
+    .card-subtitle {
+      font-size: 13px;
+      position: relative;
+      top: 52%;
+      width: 100%;
+      color: #676060;
+      padding-left:6px;
+    }
+    
+    .review-star{
+    margin-left: 20px;
+    margin-top: 5px;
+    }
+    .profile-subtitle {
+      font-size: 15px;
+      color: #676060;
+    }
+
+
+}

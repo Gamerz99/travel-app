@@ -1,0 +1,62 @@
+<ion-header>
+  <ion-navbar color="primary">
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Locations</ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only (click)="viewprofile()">
+        <img src="{{userdata.photo}}" class="profile-image">
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <ion-searchbar (ionInput)="getItems($event)" placeholder="Search Trips"></ion-searchbar>
+  <ion-refresher (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content pullingIcon="arrow-dropdown" pullingText="Pull to refresh" refreshingSpinner="circles" refreshingText="Refreshing...">
+    </ion-refresher-content>
+  </ion-refresher>
+  <div *ngIf="location">
+    <ion-item-divider color="primary">Historical Places</ion-item-divider>
+    <ion-card *ngFor="let res of location" class="card-background">
+      <ion-item>
+        <ion-avatar item-start>
+          <img src="assets/imgs/card-amsterdam.png">
+        </ion-avatar>
+        <div class="card-title">{{res.name}}</div>
+        <p class="card-subtitle">{{res.description}}</p>
+        <p>
+          <small-ion-rating [numStars]="5" [readOnly]="true" [value]="4.2">
+          </small-ion-rating>
+        </p>
+      </ion-item>
+      <ion-fab right middle>
+        <button ion-fab mini color="danger" (click)="gotofeed(res.id)">
+          <ion-icon small name="ios-arrow-forward"></ion-icon>
+        </button>
+      </ion-fab>
+    </ion-card>
+    <ion-item-divider color="primary">Beaches</ion-item-divider>
+    <ion-card *ngFor="let res of location" class="card-background">
+      <ion-item>
+        <ion-avatar item-start>
+          <img src="assets/imgs/card-amsterdam.png">
+        </ion-avatar>
+        <div class="card-title">{{res.name}}</div>
+        <p class="card-subtitle">{{res.description}}</p>
+        <p>
+          <small-ion-rating [numStars]="5" [readOnly]="true" [value]="4.2">
+          </small-ion-rating>
+        </p>
+      </ion-item>
+      <ion-fab right middle>
+        <button ion-fab mini color="danger" (click)="gotofeed(res.id)">
+          <ion-icon small name="ios-arrow-forward"></ion-icon>
+        </button>
+      </ion-fab>
+    </ion-card>
+  </div>
+
+</ion-content>

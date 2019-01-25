@@ -1,0 +1,33 @@
+page-glogin {
+    .login{
+        min-height: 45px;
+        margin-top: 10px;
+      }
+
+      .signup{
+        margin-top: 120px;
+        background: transparent;
+        min-height: 45px;
+        //border: 1px solid   rgba(255, 255, 255, 0.9);
+      }
+
+    
+      .back{
+        background: url('../assets/imgs/login2.jpg') repeat transparent;
+        background-size: cover;
+      }
+
+      .transparent{
+        margin-top: 10px;
+        background: transparent;
+        min-height: 45px;
+        border: 1px solid   rgba(255, 255, 255, 0.9);
+      }
+
+      .pad{
+        padding: 10px;
+      }
+      .contents{
+        margin-top: 100px;     
+      }
+}

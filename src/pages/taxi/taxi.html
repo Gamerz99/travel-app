@@ -1,0 +1,31 @@
+<ion-header>
+  <ion-navbar color="primary">
+    <ion-title>Taxi </ion-title>
+    <ion-buttons end>
+      <!--<button ion-button icon-only (click)="viewprofile()">
+        <img src="{{userdata.photo}}" class="profile-image">
+      </button>-->
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <ion-searchbar (ionInput)="getItems($event)" placeholder="Search Taxi"></ion-searchbar>
+  <div *ngIf="taxiguidelist">
+    <ion-card *ngFor="let res of taxiguidelist" class="card-background">
+      <ion-item>
+        <ion-avatar item-start>
+          <img src="assets/imgs/noah.jpg">
+        </ion-avatar>
+        <div class="card-title">{{res.model}}</div>
+        <p class="card-subtitle">Vehicle Type : {{res.type}}</p>
+        <p class="card-subtitle">Rate per Km : Rs{{res.rate_per_km}}</p>
+      </ion-item>
+      <ion-fab right middle>
+        <button ion-fab mini color="danger" (click)='presentProfileModal(res.id)'>
+          <ion-icon small name="ios-arrow-forward"></ion-icon>
+        </button>
+      </ion-fab>
+    </ion-card>
+  </div>
+</ion-content>

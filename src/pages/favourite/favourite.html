@@ -1,0 +1,61 @@
+<ion-header>
+  <ion-navbar color="primary">
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Favourite</ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only (click)="viewprofile()">
+        <img src="{{userdata.photo}}" class="profile-image">
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <div *ngIf="favourite">
+    <div *ngIf="tourist">
+      <ion-card *ngFor="let res of favourite" class="card-background">
+        <ion-item>
+          <ion-avatar item-start>
+            <img src="assets/imgs/card-amsterdam.png">
+          </ion-avatar>
+          <div class="card-title">{{res.name}}</div>
+          <p class="card-subtitle">{{res.area}}</p>
+          <p>
+            <small-ion-rating [numStars]="5" [readOnly]="true" [value]="4.2">
+            </small-ion-rating>
+          </p>
+        </ion-item>
+        <ion-fab right middle>
+          <button ion-fab mini color="danger" (click)='presentProfileModal(res.username)'>
+            <ion-icon small name="ios-arrow-forward"></ion-icon>
+          </button>
+        </ion-fab>
+      </ion-card>
+    </div>
+    <div *ngIf="guide">
+      <ion-card *ngFor="let res of favourite" class="card-background">
+        <ion-item>
+          <ion-avatar item-start>
+            <img src="assets/imgs/card-amsterdam.png">
+          </ion-avatar>
+          <div class="card-title">{{res.name}}</div>
+          <p class="card-subtitle">{{res.description}}</p>
+          <p>
+            <small-ion-rating [numStars]="5" [readOnly]="true" [value]="4.2">
+            </small-ion-rating>
+          </p>
+        </ion-item>
+        <ion-fab right middle>
+          <button ion-fab mini color="danger" (click)='gotolocation(res.id)'>
+            <ion-icon small name="ios-arrow-forward"></ion-icon>
+          </button>
+        </ion-fab>
+      </ion-card>
+    </div>
+  </div>
+  <div padding>
+    <button ion-button block (click)="clearlist()" class="btn" >Clear</button>
+  </div>
+</ion-content>

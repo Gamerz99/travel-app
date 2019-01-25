@@ -1,0 +1,59 @@
+<ion-header>
+
+  <ion-navbar color="primary">
+
+    <ion-title>Edit</ion-title>
+
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <ion-list>
+
+    <ion-item>
+      <ion-input type="text" placeholder="Full Name" [(ngModel)]="userdata.name"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-input type="text" placeholder="Email Address" [(ngModel)]="userdata.email"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-input type="text" placeholder="Mobile No" [(ngModel)]="userdata.contact_number"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Gender</ion-label>
+      <ion-select [(ngModel)]="userdata.gender">
+        <ion-option value="Male">Male</ion-option>
+        <ion-option value="Female">Female</ion-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Birthday</ion-label>
+      <ion-datetime displayFormat="MM/DD/YYYY" [(ngModel)]="myDate"></ion-datetime>
+    </ion-item>
+
+    <ion-item>
+      <ion-input type="text" placeholder="Country" [(ngModel)]="userdata.country"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-input type="text" placeholder="Languages"></ion-input>
+    </ion-item>
+
+
+
+
+
+
+
+
+
+
+  </ion-list>
+  <button block ion-button (click)="updatetourist()">Save</button>
+</ion-content>

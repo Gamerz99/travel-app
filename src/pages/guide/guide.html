@@ -1,0 +1,88 @@
+<ion-header>
+    <ion-navbar color="primary">
+        <button ion-button menuToggle>
+            <ion-icon name="menu"></ion-icon>
+        </button>
+        <ion-title>Guide</ion-title>
+        <ion-buttons end>
+            <button ion-button icon-only (click)="viewprofile()">
+                <img src="{{userdata.photo}}" class="uprofile-image">
+            </button>
+        </ion-buttons>
+    </ion-navbar>
+</ion-header>
+
+<ion-content>
+    <ion-searchbar (ionInput)="searchguide($event)" placeholder="Search Guide"></ion-searchbar>
+    <ion-refresher (ionRefresh)="doRefresh($event)">
+        <ion-refresher-content pullingIcon="arrow-dropdown" pullingText="Pull to refresh" refreshingSpinner="circles" refreshingText="Refreshing...">
+        </ion-refresher-content>
+    </ion-refresher>
+    <div *ngIf="nearestguide">
+        <ion-item-divider color="primary">Nearest Your Location</ion-item-divider>
+        <ion-card *ngFor="let res of nearestguide" class="card-background">
+            <ion-item>
+                <ion-avatar *ngIf="res.online==true" item-start>
+                    <img src="assets/imgs/card-amsterdam.png" class="online-image">
+                </ion-avatar>
+                <ion-avatar *ngIf="res.online==false" item-start>
+                    <img src="assets/imgs/card-amsterdam.png" class="offline-image">
+                </ion-avatar>
+                <div class="card-title">{{res.name}}</div>
+                <p class="card-subtitle">{{res.area}}</p>
+                <p>
+                    <small-ion-rating [numStars]="5" [readOnly]="true" [value]="res.rating">
+                    </small-ion-rating>
+                </p>
+            </ion-item>
+            <ion-fab right middle>
+                <button ion-fab mini color="danger" (click)='presentProfileModal(res.username)'>
+                    <ion-icon small name="ios-arrow-forward"></ion-icon>
+                </button>
+            </ion-fab>
+        </ion-card>
+    </div>
+    <div *ngIf="onlineguidelist">
+        <ion-item-divider color="primary">Now Available</ion-item-divider>
+        <ion-card *ngFor="let res of onlineguidelist" class="card-background">
+            <ion-item>
+
+                <ion-avatar  item-start>
+                    <img src="assets/imgs/card-amsterdam.png" class="online-image">
+                </ion-avatar>
+                <div class="card-title">{{res.name}}</div>
+                <p class="card-subtitle">{{res.area}}</p>
+                <p>
+                    <small-ion-rating [numStars]="5" [readOnly]="true" [value]="res.rating">
+                    </small-ion-rating>
+                </p>
+            </ion-item>
+            <ion-fab right middle>
+                <button ion-fab mini color="danger" (click)='presentProfileModal(res.username)'>
+                    <ion-icon small name="ios-arrow-forward"></ion-icon>
+                </button>
+            </ion-fab>
+        </ion-card>
+    </div>
+    <div *ngIf="offlineguidelist">
+        <ion-item-divider color="primary">Offline</ion-item-divider>
+        <ion-card *ngFor="let res of offlineguidelist" class="card-background">
+            <ion-item>
+                <ion-avatar item-start>
+                    <img src="assets/imgs/card-amsterdam.png" class="offline-image">
+                </ion-avatar>
+                <div class="card-title">{{res.name}}</div>
+                <p class="card-subtitle">{{res.area}}</p>
+                <p>
+                    <small-ion-rating [numStars]="5" [readOnly]="true" [value]="res.rating">
+                    </small-ion-rating>
+                </p>
+            </ion-item>
+            <ion-fab right middle>
+                <button ion-fab mini color="danger" (click)='presentProfileModal(res.username)'>
+                    <ion-icon small name="ios-arrow-forward"></ion-icon>
+                </button>
+            </ion-fab>
+        </ion-card>
+    </div>
+</ion-content>

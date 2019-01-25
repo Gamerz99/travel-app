@@ -1,0 +1,27 @@
+<ion-header>
+
+</ion-header>
+
+<ion-content class="back" scroll="false">
+  <div>
+    <div class="contents">
+      <div class="pad">
+        <ion-item>
+          <ion-input type="text" placeholder="User Name" [(ngModel)]="credentials.username"></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-input type="password" placeholder="Password" [(ngModel)]="credentials.password"></ion-input>
+        </ion-item>
+        <button ion-button block class="transparent" (click)="login()">Log In</button>
+      </div>
+      <div class="pad">
+        <button ion-button block icon-left color="gmail" class="login" (click)="logwithgmail()">
+          <ion-icon name="logo-google"></ion-icon>gmail</button>
+        <button ion-button block icon-left color="secondary" class="login" (click)="logwithfacebook()">
+          <ion-icon name="logo-facebook"></ion-icon>facebook</button>
+        <button ion-button block class="signup" (click)="signup()">Sign Up</button>
+      </div>
+    </div>
+  </div>
+</ion-content>
